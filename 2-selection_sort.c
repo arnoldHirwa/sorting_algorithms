@@ -11,7 +11,7 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t minPosition, swapPosition;
-	int minValue;
+	int minValue, sawMin = 0;
 	size_t i = 0, j;
 
 	if (array == NULL || size < 2)
@@ -28,14 +28,16 @@ void selection_sort(int *array, size_t size)
 			{
 				minValue = array[j];
 				swapPosition = j;
+				sawMin = 1;
 			}
 		}
-		if (array[swapPosition] != array[minPosition])
+		if (sawMin)
 		{
 			array[swapPosition] = array[minPosition];
 			array[minPosition] = minValue;
 			print_array(array, size);
 		}
-		minPosition++;
+		minPosition += 1;
+		sawMin = 0;
 	}
 }
