@@ -1,11 +1,5 @@
 #include "deck.h"
 
-int _strcmp(const char *s1, const char *s2);
-char get_value(deck_node_t *card);
-void insertion_sort_deck_kind(deck_node_t **deck);
-void insertion_sort_deck_value(deck_node_t **deck);
-void sort_deck(deck_node_t **deck);
-
 /**
  * _strcmp - Compares two strings.
  * @s1: The first string to be compared.
@@ -66,10 +60,10 @@ char get_value(deck_node_t *card)
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
+ * sort_spades_diamonds - Sort a deck of cards from spades to diamonds.
  * @deck: A pointer to the head of a deck_node_t doubly-linked list.
  */
-void insertion_sort_deck_kind(deck_node_t **deck)
+void sort_spades_diamonds(deck_node_t **deck)
 {
 	deck_node_t *iter, *insert, *tmp;
 
@@ -95,11 +89,11 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
+ * sort_ace_king - Sort a deck of cards sorted from
  *                             spades to diamonds from ace to king.
  * @deck: A pointer to the head of a deck_node_t doubly-linked list.
  */
-void insertion_sort_deck_value(deck_node_t **deck)
+void sort_ace_king(deck_node_t **deck)
 {
 	deck_node_t *iter, *insert, *tmp;
 
@@ -136,6 +130,6 @@ void sort_deck(deck_node_t **deck)
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
-	insertion_sort_deck_kind(deck);
-	insertion_sort_deck_value(deck);
+	sort_spades_diamonds(deck);
+	sort_ace_king(deck);
 }
