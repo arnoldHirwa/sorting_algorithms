@@ -31,15 +31,22 @@ int partition(int *array, int start, int end, size_t size)
 
 	for (i = start; i < end; i++)
 	{
-		if (array[i] <= pivot)
+		if (array[i] < pivot)
 		{
-			swap_int(&array[i], &array[pivotId]);
+			if (pivotId < i)
+			{
+				swap_int(&array[i], &array[pivotId]);
+				print_array(array, size);
+			}
 			pivotId++;
 		}
 	}
 
-	swap_int(&array[pivotId], &array[end]);
-	print_array(array, size);
+	if (array[pivotId] > pivot)
+	{
+		swap_int(&array[pivotId], &array[end]);
+		print_array(array, size);
+	}
 	return (pivotId);
 }
 
